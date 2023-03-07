@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    <body>
+        <h1>Messages</h1>
+        <form action="#" data-th-action="@{/msg}" data-th-object="${newMsg}" method="post">
+            <label>
+                Author
+                <input type="text" th:field="*{author}">
+            </label>
+
+            <label>
+                Message
+                <input type="text" th:field="*{message}">
+            </label>
+
+            <input type="submit" value="Send">
+        </form>
+
+        <div th:each="msg:${msgList}">
+            <p th:text="${msg.author}"></p>
+            <p th:text="${msg.timestamp}"></p>
+            <p th:text="${msg.message}"></p>
+        </div>
+    </body>
+</html>
